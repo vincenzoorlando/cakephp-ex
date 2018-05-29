@@ -1,4 +1,11 @@
-#add code here
-DATE=${date}
-echo "Creating ./built.html"
-echo "My First Build Application: $DATE" > ./built.html
+#!/bin/bash -e
+
+if [ -e /usr/local/sti/assemble ]; then
+  # old assemble location in previous php image versions
+  source /usr/local/sti/assemble
+else 
+  source ${STI_SCRIPTS_PATH}/assemble
+fi
+
+[[ -d ./tmp ]] && chmod -R go+rw ./tmp
+
